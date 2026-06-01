@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简图 - 帮助与支持</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Helvetica Neue', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            color: #1d1d1f;
+            background-color: #ffffff;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            line-height: 1.5;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 9999;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        nav .nav-content {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 0 22px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        nav .nav-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1d1d1f;
+            text-decoration: none;
+        }
+
+        nav .nav-title span {
+            color: #0071e3;
+        }
+
+        nav .nav-links a {
+            font-size: 14px;
+            color: #1d1d1f;
+            text-decoration: none;
+            margin-left: 28px;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+        }
+
+        nav .nav-links a:hover {
+            opacity: 1;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 160px 22px 100px;
+            text-align: center;
+            background: linear-gradient(180deg, #f5f5f7 0%, #ffffff 100%);
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 700;
+            letter-spacing: -0.003em;
+            margin-bottom: 12px;
+            background: linear-gradient(90deg, #1d1d1f 0%, #515154 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero .subtitle {
+            font-size: 28px;
+            font-weight: 500;
+            color: #1d1d1f;
+            margin-bottom: 16px;
+        }
+
+        .hero .description {
+            font-size: 19px;
+            color: #6e6e73;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Sections */
+        .section {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 100px 22px;
+        }
+
+        .section-title {
+            font-size: 40px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 16px;
+            letter-spacing: -0.003em;
+        }
+
+        .section-subtitle {
+            font-size: 19px;
+            color: #6e6e73;
+            text-align: center;
+            margin-bottom: 60px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* About Section */
+        .about-section {
+            background-color: #f5f5f7;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .about-card {
+            text-align: center;
+            padding: 40px 24px;
+        }
+
+        .about-card .icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .about-card h3 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .about-card p {
+            font-size: 15px;
+            color: #6e6e73;
+            line-height: 1.6;
+        }
+
+        /* FAQ Section */
+        .faq-container {
+            max-width: 740px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #d2d2d7;
+        }
+
+        .faq-item:first-child {
+            border-top: 1px solid #d2d2d7;
+        }
+
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 22px 0;
+            font-size: 17px;
+            font-weight: 600;
+            color: #1d1d1f;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-align: left;
+            font-family: inherit;
+            transition: color 0.2s;
+        }
+
+        .faq-question:hover {
+            color: #0071e3;
+        }
+
+        .faq-question .arrow {
+            font-size: 14px;
+            color: #86868b;
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+            margin-left: 16px;
+        }
+
+        .faq-item.active .faq-question .arrow {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease, padding 0.35s ease;
+        }
+
+        .faq-answer-inner {
+            padding-bottom: 22px;
+            font-size: 15px;
+            color: #6e6e73;
+            line-height: 1.7;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background-color: #f5f5f7;
+            text-align: center;
+        }
+
+        .contact-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 60px 40px;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+        }
+
+        .contact-card .contact-icon {
+            font-size: 56px;
+            margin-bottom: 24px;
+            display: block;
+        }
+
+        .contact-card h3 {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .contact-card p {
+            font-size: 17px;
+            color: #6e6e73;
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+
+        .contact-email {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 19px;
+            font-weight: 500;
+            color: #0071e3;
+            text-decoration: none;
+            padding: 14px 32px;
+            border: 2px solid #0071e3;
+            border-radius: 980px;
+            transition: all 0.2s;
+        }
+
+        .contact-email:hover {
+            background-color: #0071e3;
+            color: #ffffff;
+        }
+
+        .contact-email svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 22px;
+            border-top: 1px solid #d2d2d7;
+        }
+
+        footer p {
+            font-size: 13px;
+            color: #86868b;
+        }
+
+        footer a {
+            color: #0071e3;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 120px 22px 60px;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .hero .subtitle {
+                font-size: 22px;
+            }
+
+            .hero .description {
+                font-size: 17px;
+            }
+
+            .section {
+                padding: 60px 22px;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .section-subtitle {
+                font-size: 17px;
+                margin-bottom: 40px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .about-card {
+                padding: 28px 20px;
+            }
+
+            .faq-question {
+                font-size: 16px;
+                padding: 18px 0;
+            }
+
+            .faq-answer-inner {
+                font-size: 14px;
+            }
+
+            .contact-card {
+                padding: 40px 24px;
+            }
+
+            .contact-card h3 {
+                font-size: 24px;
+            }
+
+            .contact-email {
+                font-size: 16px;
+                padding: 12px 24px;
+            }
+
+            nav .nav-links {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero .subtitle {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-content">
+            <a href="#" class="nav-title"><span>简图</span> Support</a>
+            <div class="nav-links">
+                <a href="#about">功能介绍</a>
+                <a href="#faq">常见问题</a>
+                <a href="#contact">联系我们</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <h1>简图</h1>
+        <p class="subtitle">简洁高效，一目了然</p>
+        <p class="description">简图是一款简洁高效的图片处理工具，帮助您轻松完成日常图片编辑需求。如有任何问题，请在此页面查找帮助。</p>
+    </section>
+
+    <!-- About -->
+    <section class="about-section" id="about">
+        <div class="section">
+            <h2 class="section-title">核心功能</h2>
+            <p class="section-subtitle">简单易用，满足您多样化的图片处理需求</p>
+            <div class="about-grid">
+                <div class="about-card">
+                    <span class="icon">🖼️</span>
+                    <h3>图片编辑</h3>
+                    <p>支持裁剪、旋转、调整大小等基础编辑操作，让您的图片达到理想效果</p>
+                </div>
+                <div class="about-card">
+                    <span class="icon">🎨</span>
+                    <h3>滤镜美化</h3>
+                    <p>提供多种精美滤镜，一键美化您的照片，让每一张图片都更加出色</p>
+                </div>
+                <div class="about-card">
+                    <span class="icon">⚡</span>
+                    <h3>快速处理</h3>
+                    <p>优化的处理引擎，快速完成图片处理任务，节省您的宝贵时间</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+        <h2 class="section-title">常见问题</h2>
+        <p class="section-subtitle">在这里找到常见问题的解答</p>
+        <div class="faq-container">
+            <div class="faq-item">
+                <button class="faq-question">
+                    简图支持哪些图片格式？
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        简图支持主流的图片格式，包括 JPEG、PNG、HEIF、HEIC、GIF、BMP、TIFF、WebP 等。您可以方便地在不同格式之间进行转换和编辑。
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    简图是否需要付费？
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        简图提供基础功能免费使用。部分高级功能可能需要通过应用内购买解锁。具体定价信息请查看 App Store 中的应用详情页面。
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    编辑后的图片保存在哪里？
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        编辑后的图片会自动保存到您的系统相册中。您也可以在设置中自定义保存路径。同时，应用内也提供历史记录功能，方便您查看和重新编辑之前的图片。
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    如何批量处理多张图片？
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        在应用主界面中，选择「批量处理」功能，您可以一次性选择多张图片进行相同的编辑操作，如批量裁剪、批量添加滤镜等，大大提高工作效率。
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    简图支持哪些 Apple 设备？
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        简图支持运行 iOS 15.0 或更高版本的 iPhone 和 iPod touch，以及运行 iPadOS 15.0 或更高版本的 iPad。建议使用最新版本的操作系统以获得最佳体验。
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    如何恢复误删的图片？
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        如果您在编辑过程中误操作，可以使用应用内的「撤销」功能回到上一步。应用内编辑历史中也会保留原图的备份。如果是已保存到相册的图片，请在系统相册的「最近删除」中查找恢复。
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    简图是否会上传我的图片到服务器？
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        不会。简图的所有图片处理操作均在您的设备本地完成，不会上传您的任何图片到外部服务器。我们高度重视用户隐私和数据安全。
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    如何更新简图到最新版本？
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        打开 App Store，点击右上角的头像，下拉刷新页面后即可看到可更新的应用列表。找到简图并点击「更新」即可。您也可以在设置中开启自动更新功能。
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact-section" id="contact">
+        <div class="section">
+            <h2 class="section-title">联系我们</h2>
+            <p class="section-subtitle">如有其他问题或建议，欢迎随时与我们联系</p>
+            <div class="contact-card">
+                <span class="contact-icon">✉️</span>
+                <h3>发送邮件</h3>
+                <p>如果您在使用过程中遇到任何问题，或有任何功能建议，欢迎通过邮件与我们联系，我们会在 1-2 个工作日内回复您。</p>
+                <a href="mailto:support@example.com" class="contact-email">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                    </svg>
+                    support@example.com
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>Copyright © 2024 简图. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const item = button.parentElement;
+                const answer = item.querySelector('.faq-answer');
+                const isActive = item.classList.contains('active');
+
+                // Close all items
+                document.querySelectorAll('.faq-item').forEach(faqItem => {
+                    faqItem.classList.remove('active');
+                    faqItem.querySelector('.faq-answer').style.maxHeight = '0';
+                });
+
+                // Open clicked item if it was closed
+                if (!isActive) {
+                    item.classList.add('active');
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                }
+            });
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
